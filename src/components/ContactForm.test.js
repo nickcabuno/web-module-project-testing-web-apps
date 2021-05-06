@@ -94,4 +94,8 @@ test('renders all fields text when all fields are submitted.', async () => {
     userEvent.type(messageInput, validName);
     const button = screen.getByRole("button");
     userEvent.click(button);
+    await waitFor(() => {
+        const resultText = screen.getByText(validName);
+        expect(resultText).toBeInTheDocument();
+    });
 });
